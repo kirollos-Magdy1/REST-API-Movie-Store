@@ -4,7 +4,7 @@ const sellers = require('./routes/sellers/accounts/sellers');
 const sallerMovies = require('./routes/sellers/movies/movies');
 const customerMovies = require('./routes/customers/movies/movies');
 
-const transactions = require('./routes/transactions');
+const transactions = require('./routes/transactions/transactions');
 
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -24,7 +24,6 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json()) // parse the req.body
 app.use(express.urlencoded({ extended: true }))   // for form key & value
-// app.use(express.static('./public')) // to serve static files
 app.use(morgan('tiny'))
 app.use(helmet())
 console.log(app.get('env'));

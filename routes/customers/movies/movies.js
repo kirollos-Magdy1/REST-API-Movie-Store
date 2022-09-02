@@ -9,8 +9,6 @@ const { Transaction } = require('../../../models/transactions');
 const auth = require('../../auth')
 const mongoose = require('mongoose');
 
-// Fawn.init("mongodb://127.0.0.1:27017/movie-store", "OJLINTTASKCOLLECTION2");
-
 // view all movies
 router.get('/', async (req, res) => {
     try {
@@ -25,9 +23,7 @@ router.get('/', async (req, res) => {
 
 // purchase a movie
 router.post('/:id', auth, async (req, res) => {
-    let movie = undefined;
-    let customer = undefined;
-    let seller = undefined;
+    let movie, customer, seller
 
     const { error } = validatePurchaseMovie(req.body);
 
@@ -49,7 +45,6 @@ router.post('/:id', auth, async (req, res) => {
         res.status(400).send('err ' + err)
     }
 
-    //console.log(customer, seller, movie);
     if (customer.balance < movie.price)
         return res.status(500).send('Not enough money');
     if (movie.numberInStock === 0)
@@ -66,9 +61,7 @@ router.post('/:id', auth, async (req, res) => {
     let movieIdx = undefined;
     for (let i = 0; i < seller.movies.length; i++) {
         if (seller.movies[i]._id == req.body.movieId) {
-            console.log(seller.movies[i]._id);
-            console.log(req.body.movieId);
-            console.log(i);
+            console.log(seller.movies[i]._id, req.body.movieId, i);
             movieIdx = i;
             break;
         }
@@ -114,14 +107,6 @@ router.post('/:id', auth, async (req, res) => {
     }
 
 })
-
-/*
-.update('sellers', { _id: seller._id, movies._id: movie._id}, {
-                $inc: {
-                    movies.$.numberInStock: - 1
-                }
-            })
-            */
 
 
 module.exports = router;

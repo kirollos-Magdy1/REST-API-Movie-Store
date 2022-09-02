@@ -67,11 +67,11 @@ const validateCustomer = (customer) => {
 
 const validateUpdatedCustomer = (customer) => {
     const schema = Joi.object({
-        name: Joi.string().min(3).max(15),
-        email: Joi.string().email(),
-        phone: Joi.string(),
+        name: Joi.string().min(3).max(10),
+        email: Joi.string().email().max(25),
+        phone: Joi.string().length(4),
         age: Joi.number().min(16).max(99),
-        balance: Joi.number(),
+        balance: Joi.number().max(5000),
         isGold: Joi.boolean()
     })
 

@@ -30,9 +30,9 @@ const validateMovie = (movie) => {
         title: Joi.string().min(3).max(20).required(),
         genre: Joi.string().min(3).max(15).required(),
         //owner: Joi.objectId().required(),
-        price: Joi.number().required(),
-        numberInStock: Joi.number().required(),
-        dailyRentalRate: Joi.string()
+        price: Joi.number().required().max(1000),
+        numberInStock: Joi.number().required().min(0),
+        dailyRentalRate: Joi.number().min(0)
     })
 
     return schema.validate(movie);

@@ -91,18 +91,25 @@ router.post('/login', async (req, res) => {
 })
 
 router.patch('/edit/:id', auth, async (req, res) => {
+    const { error } = validateUpdatedCustomer(req.body);
+
+    if (error)
+        return res.status(500).send(error.details[0].message);
+
     try {
         let customer = await Customer.findById(req.params.id);
         if (!customer) {
             return res.status(404).send('the customer with the given ID is notfound');
         }
         customer = await Customer.updateOne({ _id: req.params.id }, {
-            name: req.body.name || customer.name,
-            email: customer.email,
-            balance: customer.balance,
-            age: customer.age,
-            phone: customer.phone,
-            isGold: customer.isGold
+            $set: {
+                name: req.body.name || customer.name,
+                email: req.body.email || customer.email,
+                balance: req.body.balance || customer.balance,
+                age: req.body.age || customer.age,
+                phone: req.body.phone || customer.phone,
+                isGold: req.body.isGold || customer.isGold
+            }
         })
 
         res.status(201).send(customer);

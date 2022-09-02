@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { Seller, validateSeller } = require('../../../models/sellers');
+const { Seller, validateSeller, validateUpdatedSeller } = require('../../../models/sellers');
 const auth = require('../../auth')
 const mongoose = require('mongoose');
 
@@ -77,12 +77,37 @@ router.post('/login', async (req, res) => {
     const sellerInfo = {
         name: seller.name,
         email: seller.email,
+        id: seller._id,
         phone: seller.phone,
         movies: seller.movies
     }
     res.header('x-auth-token', token).status(201).send(sellerInfo);
 })
 
+router.patch('/edit/:id', auth, async (req, res) => {
+    const { error } = validateUpdatedSeller(req.body);
+
+    if (error)
+        return res.status(500).send(error.details[0].message);
+
+    try {
+        let seller = await Seller.findById(req.params.id);
+        if (!seller) {
+            return res.status(404).send('the customer with the given ID is notfound');
+        }
+        seller = await Seller.updateOne({ _id: req.params.id }, {
+            $set: {
+                name: req.body.name || seller.name,
+                email: req.body.email || seller.email,
+                phone: req.body.phone || seller.phone,
+            }
+        })
+
+        res.status(201).send(seller);
+    } catch (err) {
+        res.status(400).send('err ' + err);
+    }
+})
 
 router.delete('/remove/:id', auth, async (req, res) => {
     try {

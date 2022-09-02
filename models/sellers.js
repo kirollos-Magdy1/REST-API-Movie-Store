@@ -6,7 +6,6 @@ const sellereSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minlength: 3,
         trim: true
     },
     email: {
@@ -18,7 +17,6 @@ const sellereSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        length: 4,
         require: true
     },
     isVerified: {
@@ -45,13 +43,23 @@ const Seller = mongoose.model('sellers', sellereSchema);
 const validateSeller = (seller) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(15).required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().required(),
-        phone: Joi.string().required()
+        email: Joi.string().max(25).email().required(),
+        password: Joi.string().min(8).max(30).required(),
+        phone: Joi.string().length(4).required()
+    })
+
+    return schema.validate(seller);
+}
+
+const validateUpdatedSeller = (seller) => {
+    const schema = Joi.object({
+        name: Joi.string().min(3).max(15),
+        email: Joi.string().email().max(25),
+        phone: Joi.string().length(4)
     })
 
     return schema.validate(seller);
 }
 
 
-module.exports = { Seller, validateSeller };
+module.exports = { Seller, validateSeller, validateUpdatedSeller };
