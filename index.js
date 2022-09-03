@@ -1,8 +1,8 @@
 const customers = require('./routes/customers/accounts/customers');
 const sellers = require('./routes/sellers/accounts/sellers');
 
-//const sallerMovies = require('./routes/sellers/movies/movies');
-//const customerMovies = require('./routes/customers/movies/movies');
+const sallerMovies = require('./routes/sellers/movies/movies');
+const customerMovies = require('./routes/customers/movies/movies');
 
 const transactions = require('./routes/transactions/transactions');
 
@@ -14,6 +14,7 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+console.log(process.env.mongodbUrl);
 
 mongoose.connect(process.env.mongodbUrl)
     .then(() => console.log('connected to mongodb'))
@@ -37,7 +38,7 @@ app.use('/api/customers/accounts/remove', customers);
 app.use('/api/customers/accounts/edit', customers);
 
 // customer movies
-// app.use('/api/customers/movies', customerMovies);
+app.use('/api/customers/movies', customerMovies);
 
 // seller account
 app.use('/api/sellers/accounts', sellers);
@@ -45,7 +46,7 @@ app.use('/api/sellers/accounts/login', sellers);
 app.use('/api/sellers/accounts/remove', sellers);
 
 // seller movies
-// app.use('/api/sellers/movies', sallerMovies);
+app.use('/api/sellers/movies', sallerMovies);
 
 
 // transactions
