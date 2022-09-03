@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     try {
-        const customers = await Customer.find().select('name age isGold');
+        const customers = await Customer.find().select('name email age isGold');
         res.send(customers);
     }
     catch (err) {

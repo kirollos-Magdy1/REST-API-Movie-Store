@@ -54,9 +54,9 @@ const Customer = mongoose.model('customers', customerSchema);
 const validateCustomer = (customer) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(15).required(),
-        password: Joi.string().min(4).required(),
-        email: Joi.string().email().required(),
-        phone: Joi.string().required(),
+        email: Joi.string().email().max(25).required(),
+        password: Joi.string().min(8).max(30).required(),
+        phone: Joi.string().length(4).required(),
         age: Joi.number().min(16).max(99).required(),
         balance: Joi.number().max(5000),
         isGold: Joi.boolean()
@@ -67,7 +67,7 @@ const validateCustomer = (customer) => {
 
 const validateUpdatedCustomer = (customer) => {
     const schema = Joi.object({
-        name: Joi.string().min(3).max(10),
+        name: Joi.string().min(3).max(15),
         email: Joi.string().email().max(25),
         phone: Joi.string().length(4),
         age: Joi.number().min(16).max(99),

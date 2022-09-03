@@ -14,6 +14,7 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+
 mongoose.connect(process.env.mongodbUrl)
     .then(() => console.log('connected to mongodb'))
     .catch((err) => console.log('Couldn\'t connect error ' + err))

@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     try {
-        const sellers = await Seller.find().select('name age isGold');
+        const sellers = await Seller.find().select('name email movies');
         res.send(sellers);
     }
     catch (err) {
@@ -109,23 +109,4 @@ router.patch('/edit/:id', auth, async (req, res) => {
     }
 })
 
-router.delete('/remove/:id', auth, async (req, res) => {
-    try {
-        const seller = await Seller.findByIdAndDelete(req.params.id);
-        if (!seller) {
-            return res.status(404).send('the seller with the given ID is not found');
-        }
-        const sellerInfo = {
-            name: seller.name,
-            id: seller._id,
-            email: seller.email,
-            phone: seller.phone,
-            movies: seller.movies
-        }
-        res.status(201).send(sellerInfo);
-    } catch (err) {
-        res.status(400).send('err ' + err);
-    }
-
-})
 module.exports = router;
