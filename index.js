@@ -43,7 +43,7 @@ app.use('/api/customers/movies', customerMovies);
 // seller account
 app.use('/api/sellers/accounts', sellers);
 app.use('/api/sellers/accounts/login', sellers);
-app.use('/api/customers/accounts/edit', sellers);
+app.use('/api/sellers/accounts/edit', sellers);
 
 // seller movies
 app.use('/api/sellers/movies', sallerMovies);
