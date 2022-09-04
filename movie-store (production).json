@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "2a17daed-e193-44e7-8743-e094fcf2b248",
+		"name": "movie-store (prod)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22316896"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "customers",
+					"item": [
+						{
+							"name": "accounts",
+							"item": [
+								{
+									"name": "view all customers",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/accounts",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "register a new customer",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"melio\",\r\n    \"email\": \"keroMelio6@gmail.com\",\r\n    \"password\": \"1234567891\",\r\n    \"age\": 22,\r\n    \"balance\": 5000,\r\n    \"phone\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/accounts",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "login a customer",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"name@gmail.com\",\r\n    \"password\": \"0123456789\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/accounts/login",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"accounts",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit account info.",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEzZTdiZmZhZTE2MmQzMWY3NzY3NjAiLCJpYXQiOjE2NjIyNDg4OTV9.YizvnC0XOcTUAxLYbxxyrzfvABTf1g04lvD8mPYmQiY",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"mel\",\r\n    \"balance\": 4000\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/accounts/edit/6313e7bffae162d31f776760",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"accounts",
+												"edit",
+												"6313e7bffae162d31f776760"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete a customer account",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzExYzcyZDZlYmE4NmJhNzAzMmQ2MDYiLCJpYXQiOjE2NjIxMDk0ODV9.SWFLBzyLkLoKa3PbsaHDZKqYMg8io88Bld6SetnWqL0",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/accounts/remove/630cd86366f93a97025931b7",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"accounts",
+												"remove",
+												"630cd86366f93a97025931b7"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "movies",
+							"item": [
+								{
+									"name": "view all movies",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/movies",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"movies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "purchase a new movie",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEzZWUxZGZhZTE2MmQzMWY3NzY3N2EiLCJpYXQiOjE2NjIyNTA1Mjl9.H_P6hJyQAfKI66RwKVQrfMq5udTuJVyG_JwVYO0Ij1w",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"movieId\": \"6313eb84fae162d31f776772\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/customers/movies/6313ee1dfae162d31f77677a",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"customers",
+												"movies",
+												"6313ee1dfae162d31f77677a"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "sellers",
+					"item": [
+						{
+							"name": "accounts",
+							"item": [
+								{
+									"name": "View all sellers",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/sellers/accounts",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"sellers",
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "register a new seller",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"saller\",\r\n    \"email\": \"saller1@gmail.com\",\r\n    \"password\": \"0123456789\",\r\n    \"phone\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/sellers/accounts",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"sellers",
+												"accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "login a seller",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"saller1.1\",\r\n    \"email\": \"saller1.1@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/sellers/accounts/login",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"sellers",
+												"accounts",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit seller account info.",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "X-Auth-Token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEzZTUzMmQyODc0M2QyNGY1MmZiZmEiLCJpYXQiOjE2NjIyNDgyNDd9.tI7PElHGhcJdfsKtvOpnT2QwuGES4o2vacf8PKyWi7E",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"saller1.1\",\r\n    \"email\": \"saller1.1@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/sellers/accounts/edit/",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"sellers",
+												"accounts",
+												"edit",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "movies",
+							"item": [
+								{
+									"name": "add a new movie",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEzZWI1N2ZhZTE2MmQzMWY3NzY3NmIiLCJpYXQiOjE2NjIyNDk4MjF9.YNmErr6ozMCPpUPopp1qDQ86TjoIRMUi9PUle5Z-L8c",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"new movie\",\r\n    \"genre\": \"science fiction\",\r\n    \"price\": 500,\r\n    \"numberInStock\": 5\r\n\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://the-movie-store.herokuapp.com/api/sellers/movies/6313eb57fae162d31f77676b",
+											"protocol": "https",
+											"host": [
+												"the-movie-store",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"api",
+												"sellers",
+												"movies",
+												"6313eb57fae162d31f77676b"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "view all transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://the-movie-store.herokuapp.com/api/transactions",
+							"protocol": "https",
+							"host": [
+								"the-movie-store",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
