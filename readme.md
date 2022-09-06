@@ -1,8 +1,8 @@
 
 
-## Brief description 📒
+## 📒 Brief description
 
-This is a REST API Service project for selling and purchasing movies in which users can create accounts either as customers or sellers.
+This is a REST API Service Application for selling and purchasing movies in which users can create accounts either as customers or sellers.
 
 ---
 ## 🔗 Available Endpoints:
@@ -21,7 +21,7 @@ Import the above postman collection ```movie-store (production).json``` to [post
 ## ⭐ Quick Demo
 
 #### seller
-![](./DocAssests/saller.gif)
+![](./DocAssests/seller.gif)
 
 #### customer
 ![](./DocAssests/customers1.gif)
