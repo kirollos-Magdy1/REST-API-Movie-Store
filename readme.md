@@ -58,7 +58,7 @@ Import the above postman collection ```movie-store (production).json``` to [post
    ``DELETE`` &nbsp; ``require Authorization`` &nbsp; returns the deleted   customer
     <br>
     
-    * **View all movies:**
+    * **View all movies:** 
      ``https://the-movie-store.herokuapp.com/api/customers/movies/`` 
    ``GET`` &nbsp; returns an array of avaiable moviess
     <br>
